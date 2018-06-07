@@ -16,10 +16,18 @@ class Triangle
       return :equilateral
     elsif @length1==@length2 || @length1==@length3 || @length2==@length3
       return :isosceles
-    else
-      return :scalene
+    elsif @length1 <= 0 || @length2 <= 0 || @length3 <= 0
+
+    elsif @length1 + @length2 >= @length3 || @length1 + @length3 >= @length2 || @length2 + @length3 >= @length1
+        return :scalene
+    else    
+      raise TriangleError        
     end
 
+  end
+
+  class TriangleError < StandardError
+    # triangle error code
   end
 
 
